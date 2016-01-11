@@ -1,27 +1,29 @@
-// listening for an event / one-time requests
-// coming from the popup
-chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
-    switch(request.type) {
-        case "color-divs":
-            colorDivs();
-        break;
-        case "page-title":
-            pageTitle();
-        break;
-    }
-    return true;
+chrome.runtime.onMessage.addListener(function (msg, sender) {
+  // First, validate the message's structure
+  if ((msg.from === 'content') && (msg.subject === 'showPageAction')) {
+    // Enable the page-action for the requesting tab
+    chrome.pageAction.show(sender.tab.id);
+  }
 });
 
-// send a message to the content script
-var colorDivs = function() {
-	chrome.tabs.getSelected(null, function(tab){
-	    chrome.tabs.sendMessage(tab.id, {type: "colors-div", color: "#efefef"});
-	});
-}
 
-var pageTitle = function() {
-  // alert("running")
-  chrome.tabs.getSelected(null, function(tab){
-      chrome.tabs.sendMessage(tab.id, {type: "page-title", content: "Content Here"});
-  });
-}
+// chrome.app.runtime.onLaunched.addListener(function(launchData) {
+//   chrome.app.window.create('popup.html', {
+//     id: "GDriveExample",
+//     innerBounds: {
+//       width: 500,
+//       height: 600,
+//       minWidth: 500,
+//       minHeight: 600
+//     },
+//     frame: 'none'
+//   });
+// });
+
+// chrome.runtime.onInstalled.addListener(function() {
+//   console.log('installed');
+// });
+
+// chrome.runtime.onSuspend.addListener(function() {
+//   // Do some simple clean-up tasks.
+// });

@@ -1,23 +1,24 @@
-chrome.extension.onMessage.addListener(function(message, sender, sendResponse) {
-	switch(message.type) {
-		case "colors-div":
-			var divs = document.querySelectorAll("div");
-			if(divs.length === 0) {
-				alert("There are not any divs in the page.");
-			} else {
-				for(var i=0; i<divs.length; i++) {
-					divs[i].style.backgroundColor = message.color;
-				}
-			}
-		break;
-	case "page-title":
-			document.body.innerHTML += '<div style="display: block; background: black; width: 200px;">TEST</div>';
-
-			var pageTitle = document.title;
-			alert(pageTitle)
-			// alert(message.content);
-			sendResponse(document.title);
-			break;
-
-	}
+chrome.runtime.sendMessage({
+  from:    'content',
+  subject: 'showPageAction'
+});
+// Listen for messages from the popup
+chrome.runtime.onMessage.addListener(function (msg, sender, response) {
+  // First, validate the message's structure
+  if ((msg.from === 'popup') && (msg.subject === 'DOMInfo')) {
+    var iframeList = document.querySelectorAll('.canvas');
+    var divTest = document.querySelectorAll('.canvas');
+    console.log("Head", iframeList[0].contentDocument.head);
+    console.log("Body", iframeList[0].contentDocument.body);
+    var domInfo = {
+      total:   document.querySelectorAll('*').length,
+      title:   JSON.stringify(document.title),
+      emailHead: JSON.stringify(iframeList[0].contentDocument.head),
+      emailBody: iframeList[0].contentDocument.body,
+      divHtml: JSON.stringify(divTest[0].style)
+    };
+    console.log(divTest[0].style);
+    console.log(JSON.stringify(divTest[0].style));
+    response(domInfo);
+  }
 });

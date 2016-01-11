@@ -1,31 +1,33 @@
 {
-  "name": "Copy/Paste Drag and Drop message",
-  "version": "0.0.1",
   "manifest_version": 2,
-  "description" : "Pure360 extention to copy and paste Drag and Drop messages",
-  "icons": { "16": "icons/16x16.png", "48": "icons/48x48.png", "128": "icons/128x128.png" },
-
-  "browser_action": {
-    "default_icon": {
-      "19": "icons/19x19.png",
-      "38": "icons/38x38.png"
-    },
-    "default_title": "Click here to copy message over",
-    "default_popup": "browseraction/popup.html"
-  },
+  "name":    "Test Extension-Matt",
+  "version": "0.1",
+  "offline_enabled": true,
+  "description" : "Description ...",
+  "icons": { "16": "img/16x16.png", "48": "img/48x48.png", "128": "img/128x128.png" },
 
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "persistent": false,
+    "scripts": ["background.js"]
   },
 
+  "content_scripts": [{
+    "matches":    ["*://*.com/*"],
+    "js":         ["content.js"],
+    "run_at":     "document_idle",
+    "all_frames": false
+  }],
 
-  "content_scripts": [
-    {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["content.js"]
-    }
-  ],
-
-  "devtools_page": "devtools/devtools.html"
+  "page_action": {
+    "default_title": "Test Extension",
+    //"default_icon": {
+    //    "19": "img/icon19.png",
+    //    "38": "img/icon38.png"
+    //},
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+      "storage",
+      "tabs"
+   ]
 }

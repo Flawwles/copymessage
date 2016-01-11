@@ -1,0 +1,108 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  width: 400px;
+  background: #ffffff;
+}
+
+textarea {
+  width: 90%;
+  height: 200px;
+}
+
+.btn {
+  border: 0;
+  outline: 0;
+}
+
+.btn-copy {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: none;
+  border: 1px solid #3c9e9e;
+  text-transform: uppercase;
+  font-family: arial;
+  letter-spacing: 0.2em;
+  transform: translateZ(0)
+  cursor: pointer;
+  border-radius: 0;
+  transition: all .5s ease;
+  color: #3c9e9e;
+}
+
+.btn-copy:hover {
+  color: #fff;
+  background: #3c9e9e;
+}
+
+.btn-add {
+  width: 100%;
+  padding: 5px;
+  background: none;
+  border: 1px solid #fff;
+  text-transform: uppercase;
+  font-family: arial;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  transform: translateZ(0)
+  cursor: pointer;
+  border-radius: 0;
+  transition: all .5s ease;
+  color: #fff;
+}
+
+.btn-add:hover {
+  color: #7198BB;
+  background: #fff;
+}
+
+.saved-message-item {
+  display: flex;
+  flex-direction: row;
+  padding: 7px;
+  border-left:  1px solid #7198BB;
+  border-right: 1px solid #7198BB;
+  align-items: center;
+  transition: all .2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15),0 0 3px rgba(0,0,0,0.15);
+}
+.saved-message-item:hover {
+  box-shadow: 0 4px 4px rgba(0,0,0,0.15),0 2px 3px rgba(0,0,0,0.15);
+}
+
+.saved-message-item:not(:last-child) {
+    border-bottom: 1px dashed #fff;
+}
+
+.saved-message-wrapper:first-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: #348C8C;
+  border-top: 1px solid #7198BB;
+}
+.saved-message-wrapper:last-child {
+  border-bottom: 1px solid #7198BB;
+}
+.saved-message-item:nth-child(odd) {
+  background: #3C9E9E;
+}
+.saved-message-title {
+  flex: 2 0 0;
+  color: #fff;
+}
+
+ .saved-message-action {
+  color: #fff;
+  font-size: 18px;
+  padding: 0 5px;
+}
+
+
+
