@@ -6,9 +6,15 @@
   </head>
   <body>
     <!-- <h3 style="font-weight:bold; text-align:center;">Copy Drag and Drop message</h3> -->
-    <button class="btn btn-copy" id="btn-copy">Copy Email</button>
-    <textarea name="" id="text-area"></textarea>
-    <textarea id="page-title"></textarea>
+    <button class="btn btn-copy" id="btn-copy">Save Email</button>
+    <button class="btn btn-copy" id="btn-clear">Clear Store</button>
+    <section id="text-area-holder">
+      <textarea name="" id="text-area"></textarea>
+      <textarea name="" id="text-area-output" readonly></textarea>
+    </section>
+
+   <!--  <textarea id="page-title"></textarea> -->
+  <input type="text" id="date">
     <section>
       <div class="saved-message-wrapper">
         <div class="saved-message-item">
