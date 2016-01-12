@@ -12,8 +12,9 @@ body {
 }
 
 textarea {
-  width: 90%;
-  height: 200px;
+  height: 50px;
+  max-width: 100%;
+  width: 100%;
 }
 
 .btn {
@@ -43,7 +44,6 @@ textarea {
 }
 
 .btn-add {
-  width: 100%;
   padding: 5px;
   background: none;
   border: 1px solid #fff;
@@ -56,6 +56,7 @@ textarea {
   border-radius: 0;
   transition: all .5s ease;
   color: #fff;
+  margin-right: 10px;
 }
 
 .btn-add:hover {
@@ -63,7 +64,9 @@ textarea {
   background: #fff;
 }
 
+
 .saved-message-item {
+  opacity: 1;
   display: flex;
   flex-direction: row;
   padding: 7px;
@@ -103,6 +106,47 @@ textarea {
   font-size: 18px;
   padding: 0 5px;
 }
+
+
+.saved-message-wrapper:last-child  {
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 
 
 
