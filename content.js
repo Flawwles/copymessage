@@ -5,21 +5,29 @@ chrome.runtime.sendMessage({
 // Listen for messages from the popup
 chrome.runtime.onMessage.addListener(function (msg, sender, response) {
   // First, validate the message's structure
+  var iframeList = document.querySelectorAll('.canvas');
   if ((msg.from === 'popup') && (msg.subject === 'DOMInfo')) {
-    var iframeList = document.querySelectorAll('.canvas');
-    var divTest = document.querySelectorAll('.canvas');
-    console.log("Head", iframeList[0].contentDocument.head);
-    console.log("Body", iframeList[0].contentDocument.body);
-    var domInfo = {
-      total:   document.querySelectorAll('*').length,
-      title:   JSON.stringify(document.title),
-      emailHead: JSON.stringify(iframeList[0].contentDocument.head),
-      emailBody: iframeList[0].contentDocument.body,
-      divHtml: JSON.stringify(divTest[0].style)
-    };
-    console.log(divTest[0].style);
-    console.log(JSON.stringify(divTest[0].style));
+
+    // console.log("Body", iframeList[0].contentDocument.body);
+    // console.log("Head", iframeList[0].contentDocument.head);
+
+    var domInfo = [];
+    domInfo.push(iframeList[0].contentDocument.head.outerHTML)
+    domInfo.push(iframeList[0].contentDocument.body.outerHTML)
+    // domInfo.push(iframeList[0].contentDocument.head.outerHTML)
     response(domInfo);
   }
+
+  if ((msg.from === 'popup') && (msg.subject === 'injectCode')) {
+    // iframeList[0]contentDocument.body.outerHTML = msg.someData
+    iframeList[0].contentDocument.head.outerHTML = msg.emailHead;
+    iframeList[0].contentDocument.body.outerHTML = msg.emailBody;
+    var ngModel = document.querySelectorAll("[ng-model='edit.styles.width']");
+   // console.log(ngModel.value);
+
+    response(status);
+  }
 });
+
+
 
