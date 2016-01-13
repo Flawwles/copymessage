@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded', function() {
   function setDOMInfo(info) {
     document.getElementById('text-area').value = info[0];
     document.getElementById('text-area-body').value = info[1];
+    console.log(info);
     saveChanges(info);
   }
 
@@ -28,11 +29,6 @@ window.addEventListener('DOMContentLoaded', function() {
     }, setDOMInfo);
   });
 
-chrome.tabs.executeScript(tabId, {
-  code: 'angular.element(document.body).injector().get(\'contentManager\').getGlobalBlockStyles(\'data-block-panel\').width;'
-}, function(results) {
-  console.log('Got Results:', results);
-})
    function injectCode() {
     chrome.tabs.query({
       active: true,
