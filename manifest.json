@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name":    "Test Extension-Matt",
+  "name":    "Copy Drag and Drop Message",
   "version": "0.1",
   "offline_enabled": true,
-  "description" : "Description ...",
+  "description" : "Copy Drag and Drop message into list of messages - Then paste them back into a new profile",
   "icons": { "16": "img/16x16.png", "48": "img/48x48.png", "128": "img/128x128.png" },
 
   "background": {
@@ -19,7 +19,7 @@
   }],
 
   "page_action": {
-    "default_title": "Test Extension",
+    "default_title": "Copy Drag and Drop Message",
     //"default_icon": {
     //    "19": "img/icon19.png",
     //    "38": "img/icon38.png"

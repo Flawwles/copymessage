@@ -22,11 +22,10 @@ chrome.runtime.onMessage.addListener(function (msg, sender, response) {
     // iframeList[0]contentDocument.body.outerHTML = msg.someData
     iframeList[0].contentDocument.head.outerHTML = msg.emailHead;
     iframeList[0].contentDocument.body.outerHTML = msg.emailBody;
-    var ngModel = document.querySelectorAll("[ng-model='edit.styles.width']");
-   // console.log(ngModel.value);
-
     response(status);
+
   }
+  console.log(walkMeIdentityName)
 });
 
 
