@@ -5,12 +5,10 @@
   "offline_enabled": true,
   "description" : "Copy Drag and Drop message into list of messages - Then paste them back into a new profile",
   "icons": { "16": "img/16x16.png", "48": "img/48x48.png", "128": "img/128x128.png" },
-
   "background": {
     "persistent": false,
     "scripts": ["background.js"]
   },
-
   "content_scripts": [{
     // "matches":    ["*://*.com/*"],
     "matches":    ["*://*.response.pure360.com/editor*"],
@@ -18,13 +16,8 @@
     "run_at":     "document_idle",
     "all_frames": false
   }],
-
   "page_action": {
     "default_title": "Copy Drag and Drop Message",
-    //"default_icon": {
-    //    "19": "img/icon19.png",
-    //    "38": "img/icon38.png"
-    //},
     "default_popup": "popup.html"
   },
   "permissions": [
