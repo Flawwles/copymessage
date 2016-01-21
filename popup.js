@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', function() {
     console.log(info);
     saveChanges(info);
   }
-  // Set values / Event listeners
+  // Event listeners
   document.getElementById('btn-copy').addEventListener('click', updateObj);
   document.getElementById('btn-clear').addEventListener('click', clearStore);
   //Target the active tab and currentWindow and return this as tabs
@@ -27,8 +27,7 @@ window.addEventListener('DOMContentLoaded', function() {
       subject: 'DOMInfo'
     }, setDOMInfo);
   });
-  // For dev only really, take the contents of the text area (which will be the iframe)
-  // Later on and add it the the messageList which is set to the value of textAreaOutput for now
+  // Add new messageList which is set to the value of textAreaOutput for now
   // Better name needed for this VAR
   function updateObj() {
     messagesList.push({
@@ -38,7 +37,6 @@ window.addEventListener('DOMContentLoaded', function() {
     });
     textAreaOutput = JSON.stringify(messagesList);
     saveChanges();
-    console.log(messagesList)
   }
   // Add the value of messageList to chrome local store
   // run the function of LoadHTMLView to update the list for any new divs
@@ -72,13 +70,11 @@ window.addEventListener('DOMContentLoaded', function() {
   function deleteMessage() {
     // Get the ID from the wrapper (two levels up)
     var attribute = this.parentNode.parentNode.getAttribute("data-id");
-    // console.log(attribute);
      messagesList.map(function(message, index) {
       if (message.date == attribute) {
-        // delete message.date[attribute]
+        // delete item from messagesList
         messagesList.splice(index, 1);
         saveChanges();
-        loadHtmlView();
       }
      });
   }
@@ -103,10 +99,18 @@ window.addEventListener('DOMContentLoaded', function() {
         }
        });
     }
+
   // Takes the messagesList and build a HTML view based on the values
   function loadHtmlView() {
-    document.getElementById('saved-message-output').innerHTML = " " // RESET
-    messagesList.map(function(message) {
+    var savedMessageOutput = document.getElementById('saved-message-output');
+    savedMessageOutput.innerHTML = " " // RESET
+    savedMessageOutput.className = 'saved-message-wrapper' // RESET
+
+    if(!messagesList.length){
+      savedMessageOutput.innerHTML = "No messages saved yet - Click the button above to save a message and it will be displayed here"
+      savedMessageOutput.className += ' list-empty'
+    } else {
+      messagesList.map(function(message) {
 
       var savedMessageItem   = document.createElement("div"),
           savedMessageTitle  = document.createElement("div"),
@@ -140,7 +144,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
       savedMessageTitle.appendChild(textnode);
       savedMessageTitleStart.appendChild(savedMessageTitleWord);
-      document.getElementById('saved-message-output').appendChild(savedMessageItem);
+      savedMessageOutput.appendChild(savedMessageItem);
     });
+    }
+
   }
 });

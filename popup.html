@@ -5,8 +5,12 @@
     <script type="text/javascript" src="popup.js"></script>
   </head>
   <body>
+  <div class="wrapper">
     <!-- <h3 style="font-weight:bold; text-align:center;">Copy Drag and Drop message</h3> -->
-    <button class="btn btn-copy" id="btn-copy">Save Email</button>
+    <button class="btn btn-copy" id="btn-copy">
+      <span>Save Email</span>
+      <i class="fa fa-floppy-o"></i>
+    </button>
 
 
     <section>
@@ -32,6 +36,25 @@
       <textarea name="" id="text-area-body"></textarea> -->
       <!-- <textarea name="" id="text-area-output" readonly></textarea> -->
     </section>
-    <button class="btn btn-copy" id="btn-clear">Clear all</button>
+    <div class="footer">
+      <div class="footer-item">
+        <!-- <p class="small-print">How does this work?</p> -->
+      </div>
+      <div class="footer-item">
+         <button class="btn btn-copy" id="btn-clear">
+            <span>Delete all</span>
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <!-- <div>
+          <span>Are you sure you want to delete all messages?</span>
+          <button class="btn btn-copy">Yes</button>
+          <button class="btn btn-copy">No</button>
+          </div> -->
+
+      </div>
+    </div>
+
+
+    </div>
   </body>
 </html>
