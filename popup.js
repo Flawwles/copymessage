@@ -75,7 +75,6 @@ window.addEventListener('DOMContentLoaded', function() {
         // delete item from messagesList
         messagesList.splice(index, 1);
         saveChanges();
-        loadHtmlView();
       }
      });
   }
@@ -100,10 +99,18 @@ window.addEventListener('DOMContentLoaded', function() {
         }
        });
     }
+
   // Takes the messagesList and build a HTML view based on the values
   function loadHtmlView() {
-    document.getElementById('saved-message-output').innerHTML = " " // RESET
-    messagesList.map(function(message) {
+    var savedMessageOutput = document.getElementById('saved-message-output');
+    savedMessageOutput.innerHTML = " " // RESET
+    savedMessageOutput.className = 'saved-message-wrapper' // RESET
+
+    if(!messagesList.length){
+      savedMessageOutput.innerHTML = "No messages saved yet - Click the button above to save a message and it will be displayed here"
+      savedMessageOutput.className += ' list-empty'
+    } else {
+      messagesList.map(function(message) {
 
       var savedMessageItem   = document.createElement("div"),
           savedMessageTitle  = document.createElement("div"),
@@ -137,7 +144,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
       savedMessageTitle.appendChild(textnode);
       savedMessageTitleStart.appendChild(savedMessageTitleWord);
-      document.getElementById('saved-message-output').appendChild(savedMessageItem);
+      savedMessageOutput.appendChild(savedMessageItem);
     });
+    }
+
   }
 });
